@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Information Form</title>
+</head>
+<body>
+	<h2>Student Information Form</h2>
+	<form id="student-form">
+		<label for="name">Name:</label><br>
+		<input type="text" id="name" name="name" required><br>
+		
+		<label for="class">Class:</label><br>
+		<input type="text" id="class" name="class" required><br>
+		
+		<label for="roll-no">Roll No.:</label><br>
+		<input type="number" id="roll-no" name="roll-no" required><br>
+		
+		<label for="father-name">Father's Name:</label><br>
+		<input type="text" id="father-name" name="father-name" required><br>
+		
+		<label for="mother-name">Mother's Name:</label><br>
+		<input type="text" id="mother-name" name="mother-name" required><br>
+		
+		<label for="age">Age:</label><br>
+		<input type="number" id="age" name="age" required><br>
+		
+		<input type="submit" value="Submit">
+	</form>
+	
+	<!-- Displaying the submitted data -->
+	<h2>Submitted Data:</h2>
+	<div id="submitted-data"></div>
+	
+	<script>
+		// JavaScript code to handle form submission and display data
+		const form = document.getElementById('student-form');
+		const submittedDataDiv = document.getElementById('submitted-data');
+		
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const formData = new FormData(form);
+			const data = {};
+			for (const [key, value] of formData) {
+				data[key] = value;
+			}
+			submittedDataDiv.innerText = JSON.stringify(data, null, 2);
+		});
+	</script>
+</body>
+</html>
